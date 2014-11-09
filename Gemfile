@@ -51,7 +51,11 @@ gem 'bootstrap-sass', '~> 3.1.1'
 
 gem 'devise'
 
+<<<<<<< HEAD
 
+=======
+gem 'figaro'
+>>>>>>> finish_user_model
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
