@@ -1,8 +1,10 @@
 Blocitoff::Application.routes.draw do
 
-  resources :lists
-
   devise_for :users
+  resources :lists
+  resources :tasks
+
+  
   
   resources :todos, only: [:new]
 

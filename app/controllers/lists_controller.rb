@@ -12,7 +12,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(params.require(:list).permit(:title, :body))
+    @list = current_user.lists.build(params.require(:list).permit(:title, :body))
      if @list.save
        flash[:notice] = "List Saved. Get Crackin!"
        redirect_to @list
