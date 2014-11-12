@@ -1,14 +1,24 @@
 <h1>All Lists</h1>
+
+<div class = "row">
+  <div class="col-md-8">
 <% @lists.each do |list| %>
   <div class="media">
      <div class="media-body">
        <h4 class="media-heading">
          <%= link_to list.title, list %>
        </h4>
-       <small>
+        <%= list.description %>
+      </br>
+      <small>
         submitted <%= time_ago_in_words(list.created_at) %> ago by <%= list.user.name %><br/>
          <%= list.tasks.count %> Tasks
        </small>
      </div>
    </div>
+   <div class="col-md-4">
+  <% if policy(List.new).create? %>
+    <% link_to "New List", new_list_path, class: 'btn btn-success' %>
+    <% end %>
+  </div>
 <% end %>

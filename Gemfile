@@ -44,6 +44,8 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'binding_of_caller'
+  gem 'better_errors'
 end
 
 
@@ -51,9 +53,23 @@ gem 'bootstrap-sass', '~> 3.1.1'
 
 gem 'devise'
 
-gem 'figaro'
+gem 'pundit'
+
+gem 'figaro', '1.0'
 
 gem 'faker'
+
+gem 'will_paginate', '~> 3.0.5'
+
+gem 'redcarpet'
+
+gem 'carrierwave'
+
+gem 'mini_magick'
+
+gem 'fog'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

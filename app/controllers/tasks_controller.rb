@@ -1,23 +1,8 @@
-class Lists::TasksController < ApplicationController
-  respond_to :html, :js
-  def create
-    
+class TasksController < ApplicationController
+  
+  def show
     @list = List.find(params[:list_id])
-    @task = @list.tasks
-
-    @task = current_user.tasks.build( task_params )
-    @new_task = Task.new
-
-    if @task.save
-      flash[:notice] = "New Task."
-    else
-      flash[:error] = "Nothing saved. Try again."
-
-    respond_with(@task) do |format|
-      format.html { redirect_to [@list.task, @list] }
-    end
-  end
-
+    @task = Task.find(params[:id])
   end
 
   def new
@@ -25,10 +10,20 @@ class Lists::TasksController < ApplicationController
     @task = Task.new
   end
 
-  def show
+  def create
     @list = List.find(params[:list_id])
-    @tasks = @list.tasks
+    @new_task = current_user.tasks.build(task_params)
+    @new_task.list = @list
+    
+    if @new_task.save
+      flash[:notice] = "New Task."
+      redirect_to [@list, @tasks]
+    else
+      flash[:error] = "Nothing saved. Try again."
+      render :edit
+    end
   end
+
 
   def edit
     @list = List.find(params[:list_id])
@@ -52,6 +47,6 @@ class Lists::TasksController < ApplicationController
   private
 
     def task_params
-      params.require(:task).permit(:title, :body)
+      params.require(:task).permit(:title, :body, :status)
     end
 end

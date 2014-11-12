@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20141110025451) do
 
   create_table "lists", force: true do |t|
     t.string   "title"
-    t.text     "body"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20141110025451) do
   create_table "tasks", force: true do |t|
     t.string   "title"
     t.text     "body"
+    t.string   "status",     default: "incomplete"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "list_id"
