@@ -7,7 +7,13 @@
 
 <div class="row">
   <div class="col-md-8">
-    <%= render partial: "tasks/form", collection: @tasks %>
+    <p><strong>You have work to do!</strong></p>
+    <ul>
+      <h3><u>To-Do's</u></h3>
+    <%= render @tasks %>
+  </ul>
+    <p><strong>Want more?<strong></p>
+    <%= render partial: "tasks/form", locals: { list: @list, task: @task } %>
     
   </div>
   <div class="col-md-8">

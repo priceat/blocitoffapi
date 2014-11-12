@@ -6,6 +6,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @tasks = @list.tasks.paginate(page: params[:page], per_page: 10)
+    @task = Task.new
     
     unless @list.user == current_user
       redirect_to root_path, alert: 'Unauthorized'

@@ -1,0 +1,14 @@
+<div class="media">
+    <h4 class="media-heading">
+       </h4>
+<div class="media-body">
+    <dl>
+    <dt><%= markdown task.title %></dt>
+     <dd><em><%= markdown task.body %> </em></dd>
+   </dl>
+   
+    <small>
+      submitted <%= time_ago_in_words(task.created_at) %> ago
+    </small>
+  </div>
+</div>
