@@ -28,7 +28,8 @@ users = User.all
  100.times do
    Task.create!(
      list: lists.sample,
-     body: Faker::Lorem.paragraph
+     body: Faker::Lorem.paragraph,
+     overdue: false
    )
  end
 

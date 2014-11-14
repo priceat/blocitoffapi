@@ -3,7 +3,6 @@ class CreateTasks < ActiveRecord::Migration
     create_table :tasks do |t|
       t.string :title
       t.text :body
-      t.string :status, default: "incomplete"
       
 
       t.timestamps

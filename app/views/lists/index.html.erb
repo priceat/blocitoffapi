@@ -22,8 +22,6 @@
         submitted <%= time_ago_in_words(list.created_at) %> ago by <%= list.user.name %><br/>
          <%= list.tasks.count %> Tasks
          <br/>
-          Most Pressing Tasks  <%= render partial: 'tasks/urgent', collection: @list.tasks %>
-
        </small>
      </div>
    </div>

@@ -1,18 +1,15 @@
-<div class="media">
-    <h4 class="media-heading">
-       </h4>
-<div class="media-body">
+<div class="jumbotron">
+<div class="container">
     <dl>
-      <% if task.incomplete? %> 
     <dt><%= link_to (markdown task.title), [task.list, task] %></dt>
+    <%if task.overdue? %>
+      <h2><div class="alerts">OVERDUE</div></h2>
+      <% end %>
      <dd><em><%= markdown task.body %> </em></dd>
-     <dd><b>Status </b><%= task.status %></dd>
-   <dd><b>Days Left To Complete</b> <%= task.days_remaining %></dd>
-   <% end %>
+   <dd><b>Days Left To Complete <%= task.days_remaining %></b> <br/>
+    <div class="col-lt-8 top-padding">
+    <%= link_to "Complete", [task.list, task], method: :delete, class: 'btn btn-info btn-s', data: { confirm: 'Are you sure this is complete?' } %>
+   </dd>
    </dl>
-   
-    <small>
-      submitted <%= time_ago_in_words(task.created_at) %> ago
-    </small>
   </div>
 </div>

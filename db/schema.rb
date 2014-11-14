@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110025451) do
+ActiveRecord::Schema.define(version: 20141114145736) do
 
   create_table "lists", force: true do |t|
     t.string   "title"
@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(version: 20141110025451) do
   create_table "tasks", force: true do |t|
     t.string   "title"
     t.text     "body"
-    t.string   "status",     default: "incomplete"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "list_id"
+    t.boolean  "overdue",     default: false
   end
 
   add_index "tasks", ["list_id"], name: "index_tasks_on_list_id"

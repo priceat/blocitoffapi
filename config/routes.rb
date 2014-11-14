@@ -5,6 +5,7 @@ Blocitoff::Application.routes.draw do
 
   resources :lists do
     resources :tasks
+
   end
 
 

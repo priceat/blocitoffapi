@@ -31,10 +31,13 @@ class TasksController < ApplicationController
   end
 
   def update
+    #change the overdue boolean logic to false
      @list = List.find(params[:list_id])
      @task = Task.find(params[:id])
     
-    if @task.update_attributes(task_params)
+
+    if @task.task_overdue  
+      @task.update_attributes(task_params)
       flash[:notice] = "Task updated. Get back to work!"
       redirect_to [@list]
     else
@@ -43,11 +46,12 @@ class TasksController < ApplicationController
     end
   end
 
- def complete
-    @item = @list.items.find(params[:id])
-    #@item.update_attribute(:completed_at, Time.now)
-    @item.destroy
-    redirect_to list_items_path
+ def destroy
+    @list = List.find(params[:list_id])
+    @task = @list.tasks.find(params[:id])
+    
+    @task.destroy
+    redirect_to @list
   end
 
 
@@ -55,6 +59,6 @@ class TasksController < ApplicationController
   private
 
     def task_params
-      params.require(:task).permit(:title, :body, :status)
+      params.require(:task).permit(:title, :body)
     end
 end

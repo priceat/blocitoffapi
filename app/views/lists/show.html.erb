@@ -6,16 +6,14 @@
 <div class="row">
   <div class="col-md-8 top-padding">
     <p><strong>You have work to do!</strong></p>
-    <ul>
-      <h5><u>To-Do's</u></h5>
+  <div class="center-block">
     <%= render @tasks %>
-  </ul>
+  </div>
     <p><strong>Want more?<strong></p>
     <%= render partial: "tasks/form", locals: { list: @list, task: @task } %>
     
   </div>
   <div class="col-md-8">
-      <%= link_to "New Task", new_list_task_path(@list), class: 'btn btn-success' %>
       <%= link_to "Delete List", @list, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this list?' } %>
     </div>
 </div>

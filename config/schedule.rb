@@ -5,15 +5,10 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
-every 1.day, :at => '4:30 am' do
-  runner "MyModel.task_to_run_at_four_thirty_in_the_morning"
-end
-# every 2.hours do
-#   command "/usr/bin/some_great_command"
-#   runner "MyModel.some_method"
-#   rake "some:great:rake:task"
-# end
+# set :output, "/path/to/my/cron_log.log
+every 2.hours do
+   rake "update_tasks"
+ end
 #
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
