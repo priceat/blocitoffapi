@@ -3,8 +3,12 @@
        </h4>
 <div class="media-body">
     <dl>
-    <dt><%= markdown task.title %></dt>
+      <% if task.incomplete? %> 
+    <dt><%= link_to (markdown task.title), [task.list, task] %></dt>
      <dd><em><%= markdown task.body %> </em></dd>
+     <dd><b>Status </b><%= task.status %></dd>
+   <dd><b>Days Left To Complete</b> <%= task.days_remaining %></dd>
+   <% end %>
    </dl>
    
     <small>

@@ -43,6 +43,14 @@ class TasksController < ApplicationController
     end
   end
 
+ def complete
+    @item = @list.items.find(params[:id])
+    #@item.update_attribute(:completed_at, Time.now)
+    @item.destroy
+    redirect_to list_items_path
+  end
+
+
 
   private
 

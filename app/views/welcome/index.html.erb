@@ -1,21 +1,29 @@
-<br/>
-<div class="jumbotron">
-  <h1>Welcome to Tater's To-Do</h1>
+<center><div class="jumbotron", align=center>
+  <div class="container">
+  <h2>Welcome to Tater's To-Do</h2>
   <p>Time to get things done</p>
   <p>
+    <% if current_user %>
+    <span class="glyphicon glyphicon-ok"></span>
+    <span class="glyphicon glyphicon-ok"></span>
+    <span class="glyphicon glyphicon-ok"></span>
+    <% else %>
       <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or 
-      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-info' %>
+    <%end%>
   </p>
 </div>
+</div></center>
 
-<div class="row">
+
+<div class="column">
   <div class="col-md-4">
-    <h2>Track your tasks.</h2>
+    <h3>Track your tasks.</h3>
   </div>
   <div class="col-md-4">
-    <h2>Be on point.</h2>
+    <h3>Be on point.</h3>
   </div>
   <div class="col-md-4">
-    <h2>Change the world.</h2>
+    <h3>Change the world.</h3>
   </div>
 </div>

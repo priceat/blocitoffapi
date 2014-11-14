@@ -1,15 +1,11 @@
 Blocitoff::Application.routes.draw do
 
   devise_for :users
-  resources :users, only: [:update]
+  resources :users, only: [:update, :show, :index]
 
   resources :lists do
     resources :tasks
   end
-
-  
-  
-  resources :todos, only: [:new]
 
 
   authenticated :user do

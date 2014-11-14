@@ -1,25 +1,25 @@
 class ListsController < ApplicationController
-  def index
+  before_action :authenticate_user!
+
+   def index
     @lists = current_user.lists
+    @list = List.new
   end
 
-  def show
+ def show
     @list = List.find(params[:id])
-    @tasks = @list.tasks.paginate(page: params[:page], per_page: 10)
+    @tasks = @list.tasks
     @task = Task.new
-    
-    unless @list.user == current_user
-      redirect_to root_path, alert: 'Unauthorized'
-    end
-    
-  end
+ end
   
   def new
     @list = List.new
   end
 
   def create
-    @list = current_user.lists.build(params.require(:list).permit(:title, :description))
+    @list = current_user.lists.build(list_params)
+
+
      if @list.save
        flash[:notice] = "List Saved. Get Crackin!"
        redirect_to @list
@@ -43,6 +43,20 @@ class ListsController < ApplicationController
        render :edit
      end
    end
+
+
+  def destroy
+     @list = List.find(params[:id])
+     title = @list.title
+ 
+     if @list.destroy
+       flash[:notice] = "\"#{title}\" was deleted successfully."
+       redirect_to lists_path
+     else
+       flash[:error] = "There was an error deleting the list."
+       render :show
+     end
+  end
 
    private
 
