@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  respond_to :html, :js
   
   def show
     @list = List.find(params[:list_id])
@@ -36,8 +37,7 @@ class TasksController < ApplicationController
      @task = Task.find(params[:id])
     
 
-    if @task.task_overdue  
-      @task.update_attributes(task_params)
+    if  @task.update_attributes(task_params)
       flash[:notice] = "Task updated. Get back to work!"
       redirect_to [@list]
     else
@@ -49,9 +49,19 @@ class TasksController < ApplicationController
  def destroy
     @list = List.find(params[:list_id])
     @task = @list.tasks.find(params[:id])
+    @task.list = @list
     
-    @task.destroy
-    redirect_to @list
+    if @task.destroy
+      flash[:notice] = "One down. More to go."
+      redirect_to @list
+    else
+      flash[:error] = "Not done yet son."
+      redirect_to @task
+    end
+     
+     #respond_with(@task) do |format|
+      # format.html { redirect_to @list }
+     #end
   end
 
 

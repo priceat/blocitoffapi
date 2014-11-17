@@ -49,7 +49,7 @@ group :development, :test do
 end
 
 
-gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap-sass', '~> 3.3.1'
 
 gem 'devise'
 
@@ -70,6 +70,10 @@ gem 'mini_magick'
 gem 'fog'
 
 gem 'whenever', :require => false
+
+gem 'newrelic_rpm'
+
+gem 'autoprefixer-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,14 +1,13 @@
  <%= form_for [list, task] do |f| %>
-  <% if task.errors.any? %>
-    <div class="alert alert-danger">
-      <h4>There are <%= pluralize(task.errors.count, "error") %>.</h4>
-      <ul>
-        <% task.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<h3><div class="new">New Task</div></h3>
+<h4><u>Suggestions for tasks</u></h4>
+
+<div class="row", align=center>
+  <div class="col-md-4">You have 7 days. Like The Ring.</div>
+    <div class="col-md-4">Get it done.</div>
+    <div class="col-md-4">The journey of a thousand miles begins with this task.</div>
+  </div>
+<br/>
   <%= form_group_tag(task.errors[:title]) do %>
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control', placeholder: "Enter task name" %>
@@ -20,5 +19,5 @@
 
   <div class="form-group top-padding">
     <%= f.submit "Save", class: 'btn btn-success' %>
-  </div>
+    </div>
 <% end %>
