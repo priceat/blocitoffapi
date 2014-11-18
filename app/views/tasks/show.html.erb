@@ -1,20 +1,38 @@
-<div class="media", align=center>
-  <div class="col-md-8">
-  <%= render partial: 'form', locals: { list: @list, task: @task } %>
+<div class="row", align=center>
+<h3><div class="new">New Task</div></h3>
+<h4><u>Suggestions for tasks</u></h4>
+
+<div class="row", align=center>
+  <div class="col-md-4">You have 7 days. Like The Ring.</div>
+    <div class="col-md-4">Get it done.</div>
+    <div class="col-md-4">The journey of a thousand miles begins with this task.</div>
   </div>
+<br/>
+
+  <div class="media", align=center>
+    <div class="form-group">
+   <%= form_for [@list, @task] do |f| %>
+         <%= f.label :title %>
+         <%= f.text_field :title, class: 'form-control'%>
+         <%= f.label :body %>
+         <%= f.text_area :body, rows: 8, class: 'form-control' %>
+       </div>
+       <div class="form-group top-padding">
+    <%= f.submit "Save", class: 'btn btn-success' %>
+       </div>
+    
    <div class="row">
-    <div class="col-md-8">
    <h4>Days Left To Complete: <%= @task.days_remaining %></h4>
  </div>
      <%if @task.overdue? %>
     <div class="col-md-8 alerts"><h2>OVERDUE</h2></div>
        <% end %>
   </div>  
-   <div class="col-md-8">
   <%= link_to "Complete", [@list, @task], method: :delete, class: 'btn btn-info btn-s', data: { confirm: 'Are you sure this is complete?' } %>
   </div>
-</div>
-  <div class="col-md-8 top-padding text-center">
+  <div class="top-padding text-center">
   <%= link_to "Delete task", [@list, @task], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this task?' } %>
+  <% end %>
   </div>
-   </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
  <% if @task.destroyed? %>
-   $('#task-' +<%= list.task.id %>).hide();
-   $('.js-tasks-count').html("<%= @tasks.list.tasks.count %> tasks");
+   $('#task-' + <%= @task.id %>).fadeOut();
+   $('.js-tasks-count').html("<%= @task.list.tasks.count %> tasks");
  <% else %>
-   $('#task-' +<%= @task.id %>).append("<div class='alert alert-error'><%= flash[:error] %></div>");
+   $('#task-' + <%= @task.id %>).append("<div class='alert alert-error'><%= flash[:error] %></div>");
  <% end %>

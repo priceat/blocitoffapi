@@ -20,8 +20,12 @@
       </br>
       <small>
         submitted <%= time_ago_in_words(list.created_at) %> ago by <%= list.user.name %><br/>
-         <%= list.tasks.count %> Tasks
+         <%= pluralize(list.tasks.count, 'Task') %> 
          <br/>
+         <% if list.tasks.where(overdue: true).any? %>
+            <div class="alerts"><%= pluralize(list.tasks.where(overdue: true).count, 'Overdue Task') %>
+         </div>
+         <% end %>
        </small>
      </div>
    </div>

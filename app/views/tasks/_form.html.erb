@@ -1,4 +1,4 @@
- <%= form_for [list, task] do |f| %>
+ <%= form_for [@list, @list.tasks.build], remote: true do |f| %>
 <h3><div class="new">New Task</div></h3>
 <h4><u>Suggestions for tasks</u></h4>
 
@@ -8,14 +8,10 @@
     <div class="col-md-4">The journey of a thousand miles begins with this task.</div>
   </div>
 <br/>
-  <%= form_group_tag(task.errors[:title]) do %>
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control', placeholder: "Enter task name" %>
-  <% end %>
-  <%= form_group_tag(task.errors[:body]) do %>
     <%= f.label :body %>
     <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter task description" %>
-  <% end %>
 
   <div class="form-group top-padding">
     <%= f.submit "Save", class: 'btn btn-success' %>

@@ -6,7 +6,7 @@
 # Example:
 #
 # set :output, "/path/to/my/cron_log.log
-every 2.hours do
+every every 1.day, :at => '12:00 am' do
    rake "update_tasks"
  end
 #

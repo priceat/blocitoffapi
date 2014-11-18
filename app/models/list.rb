@@ -1,5 +1,4 @@
 class List < ActiveRecord::Base
-  require 'active_support'
   
   has_many :tasks, dependent: :destroy
   belongs_to :user

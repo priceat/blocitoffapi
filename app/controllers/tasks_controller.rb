@@ -13,16 +13,22 @@ class TasksController < ApplicationController
 
   def create
     @list = List.find(params[:list_id])
-    @new_task = current_user.tasks.build(task_params)
-    @new_task.list = @list
+    @task = @list.tasks
+    @task = current_user.tasks.build(task_params)
+    @task.list = @list
+    @new_task = Task.new
     
-    if @new_task.save
+    if @task.save
       flash[:notice] = "New Task."
-      redirect_to [@list, @tasks]
+      #redirect_to [@list, @tasks]
     else
       flash[:error] = "Nothing saved. Try again."
-      render :edit
+      #render :edit
     end
+
+      respond_with(@task) do |format|
+       format.html { redirect_to @list }
+     end
   end
 
 
@@ -49,19 +55,18 @@ class TasksController < ApplicationController
  def destroy
     @list = List.find(params[:list_id])
     @task = @list.tasks.find(params[:id])
-    @task.list = @list
     
     if @task.destroy
       flash[:notice] = "One down. More to go."
-      redirect_to @list
+      #redirect_to @list
     else
       flash[:error] = "Not done yet son."
-      redirect_to @task
+      #redirect_to @task
     end
      
-     #respond_with(@task) do |format|
-      # format.html { redirect_to @list }
-     #end
+      respond_with(@task) do |format|
+       format.html { redirect_to @list }
+     end
   end
 
 

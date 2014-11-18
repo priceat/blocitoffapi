@@ -18,14 +18,15 @@
     </div>
     </div>
     <div class="jumbotron", align=center>
-    <div class="container">
-    <%= render @tasks %>
-  </div>
-</div>
-
-
-    <p><strong><div class="top-padding">Want more?</div></strong></p>
-    <%= render partial: "tasks/form", locals: { list: @list, task: @task } %>
+      <div class="container">
+        <div class='js-tasks'> 
+        <%= render @tasks %>
+        </div>
+      </div>
+    </div>
+    <div class='new-task'>
+  <p><strong><div class="top-padding">Want more?</div></strong></p>
+    <%= render "tasks/form" %>
  
       <%= link_to "Delete List", @list, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this list?' } %>
     </div>
