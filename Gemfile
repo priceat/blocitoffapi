@@ -64,4 +64,6 @@ gem 'newrelic_rpm'
 
 gem 'autoprefixer-rails'
 
+gem 'active_model_serializers'
+
 

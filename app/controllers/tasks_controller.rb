@@ -13,9 +13,7 @@ class TasksController < ApplicationController
 
   def create
     @list = List.find(params[:list_id])
-    @task = @list.tasks
-    @task = current_user.tasks.build(task_params)
-    @task.list = @list
+    @task = @list.tasks.build(task_params)
     @new_task = Task.new
     
     if @task.save
@@ -38,18 +36,18 @@ class TasksController < ApplicationController
   end
 
   def update
-    #change the overdue boolean logic to false
      @list = List.find(params[:list_id])
      @task = Task.find(params[:id])
     
 
     if  @task.update_attributes(task_params)
       flash[:notice] = "Task updated. Get back to work!"
-      redirect_to [@list]
+      redirect_to @list
     else
       flash[:error] = "No can do, partner. Try again."
       render :edit
     end
+
   end
 
  def destroy
