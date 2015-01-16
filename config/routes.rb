@@ -1,12 +1,26 @@
 Blocitoff::Application.routes.draw do
 
-  devise_for :users
+ devise_for :users
   resources :users, only: [:update, :show, :index]
 
   resources :lists do
     resources :tasks
 
   end
+
+
+  namespace :api do
+    resources :users, only: [:update, :show, :index]
+    resources :lists do
+      resources :tasks
+    end
+  end
+
+
+
+  
+  
+
 
 
   authenticated :user do

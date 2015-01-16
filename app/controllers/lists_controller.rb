@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!
+  before_filter :authorize_admin!, :except => [:index, :show]
 
    def index
     @lists = current_user.lists
