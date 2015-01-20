@@ -1,4 +1,4 @@
-Blocitoff::Application.routes.draw do
+Blocitoffapi::Application.routes.draw do
 
  devise_for :users
   resources :users, only: [:update, :show, :index]

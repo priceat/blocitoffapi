@@ -32,11 +32,16 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'capybara'
   gem 'binding_of_caller'
   gem 'better_errors'
 end
 
+group :test do
+  gem 'rack-test'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem "factory_girl_rails", "~> 4.0"
+end
 
 gem 'bootstrap-sass', '~> 3.3.1'
 

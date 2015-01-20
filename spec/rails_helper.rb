@@ -7,6 +7,7 @@ require 'rspec/autorun'
   require 'capybara/rails'
   require 'capybara/rspec'
  require 'active_support/core_ext'
+ require 'securerandom'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

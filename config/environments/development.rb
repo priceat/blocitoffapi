@@ -1,4 +1,4 @@
-Blocitoff::Application.configure do
+Blocitoffapi::Application.configure do
   
   config.cache_classes = false
 
